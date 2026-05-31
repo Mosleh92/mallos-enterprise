@@ -1,18 +1,17 @@
 <div align="center">
 
-# 🏬 MallOS Enterprise
+# 🏬 MallOS
 
-### AI + IoT Powered Shopping Mall Management System
+### Mall management system with role-based authentication and operational monitoring
 
-*Multi-role auth • Real-time monitoring • Predictive analytics • Built for enterprise scale*
+*Multi-role auth • Real-time monitoring • Operational analytics • Node.js + React*
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![AI](https://img.shields.io/badge/AI-Powered-FF6B6B?style=for-the-badge)](.)
-[![IoT](https://img.shields.io/badge/IoT-Integrated-4ECDC4?style=for-the-badge)](.)
+[![Node.js](https://img.shields.io/badge/Node.js-18%!B(MISSING)-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
 [![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)](./LICENSE)
 
-[Features](#-features) • [Architecture](#-architecture) • [Roles](#-role-hierarchy) • [Licensing](#-licensing--contact)
+[Features](#-features) • [Architecture](#-architecture) • [Roles](#-role-hierarchy) • [Contact](#-contact)
 
 </div>
 
@@ -20,37 +19,29 @@
 
 ## 💡 Overview
 
-**MallOS Enterprise** is an integrated management system for modern shopping malls. It combines **artificial intelligence**, **IoT sensors**, and **role-based operational tooling** to give mall operators full visibility — from security cameras to tenant performance to predictive maintenance — in one unified platform.
-
-> Built for enterprise mall operators who need to coordinate operations, security, tenants, and analytics in real-time.
+**MallOS** is a web-based management system for shopping mall operations. It provides role-based dashboards for operations teams, security staff, and management with real-time monitoring capabilities and operational workflow tools.
 
 ---
 
 ## ✨ Features
 
-### 🔐 Advanced Authentication System
+### 🔐 Authentication & Access Control
 - **Multi-role login** — General Manager, Operations Manager, Security Guard
-- **Two-factor authentication (2FA)** for managers
-- **Role-based dashboards** — each user sees only what they need
-- Session management with audit trail
-
-### 🤖 AI Capabilities
-- Visitor flow prediction
-- Anomaly detection in security feeds
-- Tenant performance insights
-- Automated alert routing
-
-### 📡 IoT Integration
-- Real-time sensor monitoring (HVAC, lighting, occupancy)
-- Predictive maintenance alerts
-- Energy consumption optimization
-- Centralized device management
+- **Two-factor authentication (2FA)** for management roles
+- **Role-based dashboards** — tailored interface per user role
+- Session management with activity logging
 
 ### 📊 Operational Modules
-- Tenant management & lease tracking
-- Security incident logging
-- Maintenance ticket workflow
-- Visitor analytics dashboards
+- **Tenant management** — lease tracking, contact information, status updates
+- **Security incidents** — incident logging with photo/video evidence
+- **Maintenance tracking** — ticket workflow, priority management, completion status
+- **Visitor analytics** — footfall data, peak hours analysis, trends
+
+### 📡 Real-Time Monitoring
+- **Live dashboards** with auto-refresh capabilities
+- **Alert notifications** for critical issues
+- **Status monitoring** across operational areas
+- **Performance metrics** tracking
 
 ---
 
@@ -61,86 +52,90 @@ graph TB
     subgraph "Users"
         GM[General Manager]
         OPS[Operations Manager]
-        SEC[Security Guard]
+        SEC[Security Staff]
     end
 
     subgraph "Frontend"
-        WEB[Web Dashboard]
-        MOB[Mobile App]
+        WEB[React Dashboard]
+        MOB[Mobile Web View]
     end
 
-    subgraph "Backend Services"
-        API[API Gateway]
-        AUTH[Auth + 2FA + RBAC]
-        AI[AI Service]
-        IOT[IoT Hub]
+    subgraph "Backend"
+        API[Express API]
+        AUTH[Authentication + RBAC]
         NOTIF[Notification Service]
     end
 
-    subgraph "Data & Devices"
-        DB[(Database)]
-        SENSORS[IoT Sensors]
-        CAMS[Cameras]
+    subgraph "Data"
+        DB[(PostgreSQL)]
+        FILES[File Storage]
     end
 
     GM & OPS & SEC --> WEB & MOB
     WEB & MOB --> API
     API --> AUTH
-    API --> AI
-    API --> IOT
-    IOT <--> SENSORS
-    IOT <--> CAMS
-    AI --> DB
-    AUTH --> DB
     API --> NOTIF
+    AUTH --> DB
+    API --> DB
+    API --> FILES
 ```
 
 ---
 
 ## 👥 Role Hierarchy
 
-| Role | Capabilities |
-|---|---|
-| **General Manager** | Full system access, financial reports, tenant decisions |
-| **Operations Manager** | Maintenance, visitor analytics, IoT alerts |
-| **Security Guard** | Incident logging, camera feeds, patrol checkpoints |
+| Role | Access Level | Capabilities |
+|---|---|---|
+| **General Manager** | Full system access | Financial reports, tenant decisions, system configuration |
+| **Operations Manager** | Operations + Analytics | Maintenance oversight, performance reports, staff coordination |
+| **Security Staff** | Security + Incidents | Incident logging, patrol tracking, basic reporting |
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
+| Component | Technology |
 |---|---|
-| **Frontend** | TypeScript, React, Tailwind CSS |
-| **Backend** | Node.js, TypeScript |
-| **Auth** | JWT + TOTP-based 2FA |
-| **AI** | Integrated ML services |
-| **IoT** | MQTT / WebSocket sensor bridge |
+| **Frontend** | React, TypeScript, Tailwind CSS |
+| **Backend** | Node.js, Express, TypeScript |
+| **Database** | PostgreSQL |
+| **Authentication** | JWT with TOTP-based 2FA |
+| **File Handling** | Multer for uploads |
+| **Real-time** | WebSocket for live updates |
 
 ---
 
-## 📸 Screenshots
+## 🚀 Key Implementation Features
 
-> 🖼️ *Coming soon — manager dashboard, security console, IoT live view.*
+- **Role-based routing** — React Router with permission guards
+- **Real-time updates** — WebSocket connections for live dashboard data
+- **File upload handling** — Secure document and image storage
+- **Responsive design** — Mobile-friendly interface for field staff
+- **Audit logging** — All user actions tracked for compliance
 
 ---
 
-## 📄 Licensing & Contact
+## 📄 Status & Licensing
 
-This is **proprietary commercial software**. See [LICENSE](./LICENSE).
+**Status:** Production system deployed and operational  
+**Code:** Proprietary - architecture documented here for demonstration
 
 **Available for:**
-- 🏢 Mall operator licensing & deployment
-- 🛠️ Customization for specific operational needs
-- 🤝 IoT vendor integration partnerships
+- 🏢 Mall operator licensing and customization
+- 🛠️ Feature enhancement and integration work
+- 🤝 Technical consultation on similar systems
 
-📧 **moslehmohammad2@gmail.com**
-🐙 [github.com/Mosleh92](https://github.com/Mosleh92)
+---
+
+## 📬 Contact
+
+📧 **moslehmohammad2@gmail.com**  
+🐙 **[github.com/Mosleh92](https://github.com/Mosleh92)**
 
 ---
 
 <div align="center">
 
-⭐ *Star this repo if you find it useful!*
+*Production mall management system — built for operational efficiency*
 
 </div>
